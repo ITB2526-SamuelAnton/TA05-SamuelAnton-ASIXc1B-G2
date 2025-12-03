@@ -1,0 +1,180 @@
+/* Variables para colores */
+:root {
+    --primary-bg: #fff;
+    --secondary-bg: #000;
+    --text-color: #000;
+    --light-text-color: #fff;
+    --max-width: 800px;
+}
+
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+}
+
+/* Barra de Navegación (Header) */
+.navbar {
+    background-color: var(--secondary-bg);
+    color: var(--light-text-color);
+    /* **MODIFICADO:** Usamos justify-content: space-between para distribuir los elementos */
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 400; /* No tan grueso */
+    /* **MODIFICADO:** Centramos el título usando posicionamiento absoluto */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.menu-icon {
+    /* **MODIFICADO:** Hacemos que la posición sea estática para que se alinee con flexbox */
+    position: static;
+    order: -1; /* Forzamos que vaya al inicio (izquierda) */
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* --- ESTILOS AÑADIDOS PARA EL NUEVO MENÚ DE NAVEGACIÓN (.main-nav) --- */
+
+/* Contenidor del menú principal */
+.main-nav {
+    /* Mantiene el menú a la derecha, en contraposición al menu-icon */
+    margin-left: auto;
+}
+
+/* Llista de navegació */
+.main-nav ul {
+    list-style: none; /* Elimina las viñetas */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Coloca los elementos de la lista en línea */
+    gap: 25px; /* Espacio entre los enlaces */
+}
+
+/* Enllaços */
+.main-nav a {
+    color: var(--light-text-color); /* Color blanco o claro */
+    text-decoration: none; /* Elimina el subrayado */
+    font-size: 0.95em;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+}
+
+.main-nav a:hover {
+    opacity: 0.7; /* Efecto al pasar el ratón */
+}
+
+/* Media Query Opcional: Para pantallas pequeñas (móviles), ocultamos el menú completo */
+@media (max-width: 900px) {
+    .main-nav {
+        display: none;
+    }
+}
+
+/* ------------------------------------------------------------------------ */
+
+
+/* Contenido Principal */
+.content-container {
+    max-width: var(--max-width);
+    margin: 0 auto; /* Centra el contenedor */
+    padding: 20px;
+}
+
+/* Secciones */
+section {
+    margin-bottom: 30px;
+}
+
+.profile-header p {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.about-me h2,
+.projects h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Proyectos */
+.projects-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start; /* Alinea los proyectos a la izquierda */
+    flex-wrap: wrap; /* Permite que los proyectos se envuelvan en pantallas pequeñas */
+}
+
+.project-item {
+    flex: 1; /* Permite que los elementos crezcan */
+    min-width: 250px; /* Ancho mínimo para que no se vean muy pequeños */
+    max-width: calc(50% - 10px); /* Dos proyectos por fila en el ancho máximo */
+    text-align: left;
+}
+
+.project-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Para simular la imagen del lobo, puedes añadir un filtro o un borde */
+    border: 1px solid #ccc;
+    object-fit: cover;
+}
+
+.project-item p {
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+/* Botón de Contacto */
+.contact-section {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.contact-button {
+    background-color: var(--secondary-bg);
+    color: var(--light-text-color);
+    border: none;
+    padding: 15px 40px;
+    font-size: 1em;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #333;
+}
+
+/* Pie de Página (Footer) */
+.footer {
+    background-color: var(--secondary-bg);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: var(--light-text-color);
+    text-decoration: none;
+}
