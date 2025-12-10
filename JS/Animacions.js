@@ -1,53 +1,78 @@
-// PROJECT LIST (expandable for future scalability)
-const projects = [
-  {
-    name: "Project 1 - Name Project",
-    img: "https://via.placeholder.com/300x200",
-    what: "Descripción de WHAT IS del proyecto 1.",
-    why: "Explicación de WHY del proyecto 1."
-  },
-  {
-    name: "Project 2 - Name Project",
-    img: "https://via.placeholder.com/300x200",
-    what: "Descripción de WHAT IS del proyecto 2.",
-    why: "Explicación de WHY del proyecto 2."
-  }
-];
+// JavaScript para manejar las animaciones y la interactividad de la página
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Menú desplegable ---
+    const menuIcon = document.getElementById('menuIcon');
+    const menu = document.getElementById('menuDropdown');
 
-// Inject projects dynamically
-const container = document.getElementById("projectsContainer");
+    // Abre y cierra el menú al hacer clic en el icono
+    menuIcon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita que el evento se propague y cierre el menú inmediatamente
+        menu.classList.toggle('show');
+    });
 
-projects.forEach((project, index) => {
-  const card = document.createElement("div");
-  card.classList.add("project-card");
+    // Cierra el menú si se hace clic fuera de él
+    document.addEventListener('click', function(event) {
+        if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+            menu.classList.remove('show');
+        }
+    });
 
-  card.innerHTML = `
-    <h3>${project.name}</h3>
-    <img src="${project.img}" alt="Project image" />
+    // Evita que el evento de clic en el menú lo cierre
+    menu.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
 
-    <div class="flip-card" data-id="${index}-what">
-      <div class="flip-inner">
-        <div class="flip-front">WHAT IS</div>
-        <div class="flip-back">${project.what}</div>
-      </div>
-    </div>
+    // --- PROJECT LIST (expandable for future scalability) ---
+    const projects = [
+        {
+            name: "Project 1 - Name Project",
+            img: "https://via.placeholder.com/300x200",
+            what: "Descripción de WHAT IS del proyecto 1.",
+            why: "Explicación de WHY del proyecto 1."
+        },
+        {
+            name: "Project 2 - Name Project",
+            img: "https://via.placeholder.com/300x200",
+            what: "Descripción de WHAT IS del proyecto 2.",
+            why: "Explicación de WHY del proyecto 2."
+        }
+    ];
 
-    <div class="flip-card" data-id="${index}-why">
-      <div class="flip-inner">
-        <div class="flip-front">WHY</div>
-        <div class="flip-back">${project.why}</div>
-      </div>
-    </div>
-  `;
+    // Inject projects dynamically
+    const container = document.getElementById("projectsContainer");
 
-  container.appendChild(card);
-});
+    projects.forEach((project, index) => {
+        const card = document.createElement("div");
+        card.classList.add("project-card");
 
-// Add flip animation listeners
-const flipCards = document.querySelectorAll('.flip-card');
+        card.innerHTML = `
+            <h3>${project.name}</h3>
+            <img src="${project.img}" alt="Project image" />
 
-flipCards.forEach(card => {
-  card.addEventListener('click', () => {
-    card.classList.toggle('flipped');
-  });
+            <div class="flip-card" data-id="${index}-what">
+                <div class="flip-inner">
+                    <div class="flip-front">WHAT IS</div>
+                    <div class="flip-back">${project.what}</div>
+                </div>
+            </div>
+
+            <div class="flip-card" data-id="${index}-why">
+                <div class="flip-inner">
+                    <div class="flip-front">WHY</div>
+                    <div class="flip-back">${project.why}</div>
+                </div>
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
+
+    // Add flip animation listeners
+    const flipCards = document.querySelectorAll('.flip-card');
+
+    flipCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
 });

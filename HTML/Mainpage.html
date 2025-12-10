@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio - Nombre y Apellido</title>
-    <link rel="stylesheet" href="../CSS/Style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> </head>
+    <title>Portfolio - Name and surname </title>
+    <link rel="stylesheet" href="../CSS/Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
 
     <header class="navbar">
-        <div class="menu-icon">
+        <!-- Icono de menú -->
+        <div class="menu-icon" id="menuIcon">
             <i class="fas fa-bars"></i>
         </div>
         <h1>Portfolio</h1>
     </header>
 
+    <!-- Menú desplegable -->
+    <div id="menuDropdown" class="menu-dropdown">
+        <ul>
+            <li><a href="./Project1.html">Oria</a></li>
+            <li><a href="./Project2.html">Techrestore</a></li>
+            <li><a href="./ProjectsList.html">Projects Lists</a></li>
+        </ul>
+    </div>
+
     <main class="content-container">
 
         <section class="profile-header">
-            <p>Name and last name</p>
+            <p>Name and surname</p>
         </section>
 
         <section class="about-me">
@@ -40,7 +52,7 @@
         </section>
 
         <section class="contact-section">
-            <button class="contact-button">contact form</button>
+            <button class="contact-button">Contact form</button>
         </section>
 
     </main>
@@ -48,6 +60,8 @@
     <footer class="footer">
         <p>© 2025 - All rights reserved - <a href="mailto:mail@tb.cat">mail@tb.cat</a></p>
     </footer>
+
+    <script src="../JS/Animacions.js"></script>
 
 </body>
 </html>
