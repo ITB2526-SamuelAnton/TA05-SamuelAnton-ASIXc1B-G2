@@ -1,39 +1,51 @@
+/* Importamos las fuentes: Lato (Header, Navegación), Poppins (Títulos, Botones), Roboto (Cuerpo) */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@700&family=Roboto:wght@300;400;700&display=swap');
+
 /* Variables para colores */
 :root {
-    --primary-bg: #fff;
-    --secondary-bg: #000;
-    --text-color: #000;
-    --light-text-color: #fff;
+    --primary-bg: #F9F9F9;          /* Fondo principal: Gris Muy Claro/Cálido */
+    --secondary-bg: #000;           /* Fondo secundario: Negro (para Footer) */
+    --dark-grey: #121212;           /* Fondo terciario: Gris Oscuro (para Header y Menú) */
+
+    --text-color: #333333;          /* Texto principal: Gris oscuro suave */
+    --light-text-color: #fff;       /* Texto claro: Blanco */
     --max-width: 800px;
+
+    /* --- PALETA DE ACENTO: PÚRPURA PROFESIONAL VIVO --- */
+    --accent-color: #9B59B6;        /* Púrpura Intenso (Botones, Títulos) */
+    --hover-color: #8E44AD;         /* Púrpura más oscuro para efecto Hover */
+    --card-back-color: #555;        /* Gris oscuro para la parte trasera del flip-card */
 }
 
 /* Estilos Generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     margin: 0;
     padding: 0;
     background-color: var(--primary-bg);
     color: var(--text-color);
-    overflow-x: hidden; /* Para evitar que aparezca una barra de desplazamiento al mostrar el menú */
+    overflow-x: hidden;
 }
 
 /* Barra de Navegación (Header) */
 .navbar {
-    background-color: var(--secondary-bg);
+    background-color: var(--dark-grey); /* Gris Oscuro */
     color: var(--light-text-color);
-    padding: 15px 40px;
+    padding: 45px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 10; /* Asegura que la barra de navegación esté por encima del menú */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 
 .navbar h1 {
     margin: 0;
-    font-size: 2em;
-    font-weight: 400;
+    font-family: 'Lato', sans-serif; /* Lato: Elegante y minimalista */
+    font-size: 2.5em;
+    font-weight: 900;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -41,23 +53,23 @@ body {
 }
 
 .menu-icon {
-    font-size: 1.5em;
+    font-size: 2em;
     cursor: pointer;
-    z-index: 20; /* Asegura que el icono esté encima del menú */
+    z-index: 20;
 }
 
 /* Menú desplegable lateral */
 .menu-dropdown {
     position: fixed;
     top: 0;
-    left: -250px; /* Lo dejamos fuera de la pantalla al principio */
+    left: -250px;
     width: 250px;
     height: 100%;
-    background-color: var(--secondary-bg);
+    background-color: var(--dark-grey);
     color: var(--light-text-color);
-    transition: left 0.3s ease; /* Desliza el menú */
-    padding-top: 60px; /* Para dejar espacio para el botón */
-    z-index: 5; /* Menú por debajo de la barra de navegación */
+    transition: left 0.3s ease;
+    padding-top: 110px;
+    z-index: 5;
 }
 
 .menu-dropdown ul {
@@ -72,6 +84,8 @@ body {
 }
 
 .menu-dropdown a {
+    font-family: 'Lato', sans-serif; /* Lato en la navegación */
+    font-weight: 700;
     color: var(--light-text-color);
     text-decoration: none;
     font-size: 1.2em;
@@ -79,12 +93,13 @@ body {
 }
 
 .menu-dropdown a:hover {
-    opacity: 0.7;
+    color: var(--accent-color);
+    opacity: 1;
 }
 
 /* Mostrar el menú */
 .menu-dropdown.show {
-    left: 0; /* Cuando tenga la clase "show", el menú se deslizará a la vista */
+    left: 0;
 }
 
 /* Estilos Generales para el resto de la página */
@@ -96,45 +111,76 @@ body {
 
 /* Secciones */
 section {
-    margin-bottom: 40px; /* Aumento el margen inferior para más separación entre secciones */
+    margin-bottom: 40px;
 }
 
+/* Nombre y Apellido (profile-header) */
 .profile-header p {
-    font-size: 1.1em;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
     margin-bottom: 5px;
 }
 
+/* ABOUT ME - Párrafo del Lorem Ipsum */
+.about-me p {
+    font-weight: 300; /* Peso ligero para lectura cómoda (Roboto) */
+}
+
+/* TÍTULOS DE SECCIÓN */
 .about-me h2,
 .projects h2 {
+    font-family: 'Poppins', sans-serif; /* Poppins para títulos de sección */
     font-size: 1.8em;
-    font-weight: bold;
+    font-weight: 700;
     margin-top: 0;
     margin-bottom: 15px;
+    color: var(--accent-color);
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 8px;
+    display: inline-block;
 }
 
 /* Proyectos */
 .projects-grid {
     display: flex;
     gap: 20px;
-    justify-content: center; /* Alinea los proyectos al centro */
+    justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Enlaces de las imágenes (para eliminar el borde/contorno de link) */
+.projects-grid a {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    display: block;
 }
 
 .project-item {
     flex: 1;
     min-width: 250px;
     max-width: calc(50% - 10px);
-    text-align: left;
+    text-align: center; /* Centramos el contenido dentro del item */
 }
 
+/* IMÁGENES DE PROYECTO: TAMAÑO UNIFORME */
 .project-item img {
-    width: 100%;
-    height: auto;
+    width: 370px;  /* Ancho fijo */
+    height: 370px; /* Alto fijo */
+    object-fit: contain; /* Ajusta la imagen completa sin recortar */
+    margin: 0 auto; /* Centra la imagen */
+
     display: block;
-    border: 1px solid #ccc;
-    object-fit: cover;
-    border-radius: 10px; /* Añadido borde redondeado */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadido sombra sutil */
+    border: 1px solid var(--primary-bg); /* Borde sutil */
+
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.project-item img:hover {
+    transform: translateY(-5px);
 }
 
 .project-item p {
@@ -149,21 +195,128 @@ section {
     margin-bottom: 50px;
 }
 
-.contact-button {
+/* Contenedor de los botones (FLEX) */
+.contact-buttons {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 70px
+}
+
+/* ------------------------------------------- */
+/* ESTILOS MODIFICADOS PARA EL EFECTO FLIP CARD */
+/* ------------------------------------------- */
+
+/* Contenedor principal de la tarjeta */
+.flip-card {
+    width: 240px;
+    height: 75px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* Contenedor interior que realmente girará */
+.flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Estado de giro al hacer click (ACTIVADO POR JS) */
+.flip-card.flipped .flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* Cara frontal y trasera - Son los botones */
+.contact-button,
+.flip-front,
+.flip-back
+{
+    font-family: 'Poppins', sans-serif;
     background-color: var(--secondary-bg);
     color: var(--light-text-color);
     border: none;
-    padding: 15px 40px;
+    padding: 25px 30px;
     font-size: 1em;
     cursor: pointer;
     text-transform: uppercase;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    line-height: 1.5;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-.contact-button:hover {
-    background-color: #333;
-    transform: scale(1.1); /* Efecto de aumento al pasar el ratón */
+/* Estilos de la cara frontal (Acento Púrpura) */
+.flip-card-front,
+.flip-front {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+}
+
+/* Estilos de la cara trasera (Gris oscuro) */
+.flip-card-back,
+.flip-back {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    text-transform: none;
+
+    background-color: var(--card-back-color);
+    color: var(--light-text-color);
+    transform: rotateY(180deg);
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.flip-card-back p,
+.flip-back p {
+    margin: 0;
+}
+
+/* BOTÓN DE "CONTACT FORM" (Acento Púrpura) */
+.contact-more-info {
+    font-family: 'Poppins', sans-serif;
+
+    background-color: var(--accent-color) !important;
+    color: var(--light-text-color) !important;
+    padding: 15px 40px !important;
+    line-height: 1.5 !important;
+    position: static !important;
+    backface-visibility: visible !important;
+    width: auto !important;
+    height: auto !important;
+    display: inline-block !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto Hover */
+.contact-button:hover,
+.flip-front:hover,
+.contact-more-info:hover {
+    background-color: var(--hover-color) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Botón centrado debajo de los otros dos */
+.contact-button-center {
+    text-align: center;
+    margin-top: 70px;
 }
 
 /* Pie de Página (Footer) */
@@ -173,13 +326,15 @@ section {
     text-align: center;
     padding: 20px 0;
     font-size: 0.9em;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .footer a {
-    color: var(--light-text-color);
+    color: var(--accent-color);
     text-decoration: none;
 }
 
 .footer a:hover {
     text-decoration: underline;
+    color: var(--hover-color);
 }
