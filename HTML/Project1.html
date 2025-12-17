@@ -7,17 +7,15 @@
     <link rel="stylesheet" href="../CSS/Style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body class="page-transition">
 
     <header class="navbar">
-        <!-- Icono de menú con el ID correcto -->
         <div class="menu-icon" id="menuIcon">
             <i class="fas fa-bars"></i>
         </div>
-        <h1>Project 1 - Oria</h1>
+        <h1>PROJECT 1 - ORIA</h1>
     </header>
 
-    <!-- Menú desplegable con el ID correcto -->
     <div id="menuDropdown" class="menu-dropdown">
         <ul>
             <li><a href="./Mainpage.html">Main Page</a></li>
@@ -26,59 +24,52 @@
         </ul>
     </div>
 
-    <main class="content-container">
+    <div id="page-content">
+        <main class="content-container">
+            <section class="profile-header fade-in">
+                <p>Name and surname</p>
+            </section>
 
-        <section class="profile-header">
-            <p>Name and surname</p>
-        </section>
-
-        <section class="about-me">
-            <h2>Logotype</h2>
-            <div class="projects-grid">
-                <div class="project-item">
-                    <img src="../Images/Logo_EchoMind-SinFondo.png" alt="Logotipo">
+            <section class="about-me fade-in">
+                <h2>Logotype</h2>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <img src="../Images/Logo_EchoMind-SinFondo.png" alt="Logotipo">
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-<section class="contact-section">
-    <div class="contact-buttons">
+            <section class="contact-section fade-in">
+                <div class="contact-buttons">
+                    <div class="flip-card">
+                        <div class="flip-inner">
+                            <div class="flip-card-front">What is?</div>
+                            <div class="flip-card-back">Contenido de la respuesta "What is?"</div>
+                        </div>
+                    </div>
 
-        <div class="flip-card flip-card-container-what">
-            <div class="flip-inner">
-                <div class="contact-button flip-card-front">
-                    What is?
+                    <div class="flip-card">
+                        <div class="flip-inner">
+                            <div class="flip-card-front">Why?</div>
+                            <div class="flip-card-back">Contenido de la respuesta "Why?"</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-button flip-card-back">
-                    <p>Contenido de la respuesta "What is?"</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="flip-card flip-card-container-why">
-            <div class="flip-inner">
-                <div class="contact-button flip-card-front">
-                    Why?
+                <div class="contact-button-center">
+                    <a href="../Projectes/echomind-portalweb/dev/pagines/Portal.html" class="contact-button contact-more-info">More Information</a>
                 </div>
-                <div class="contact-button flip-card-back">
-                    <p>Contenido de la respuesta "Why?"</p>
-                </div>
-            </div>
-        </div>
-
+            </section>
+        </main>
     </div>
-    <div class="contact-button-center">
-        <a href="../Projectes/echomind-portalweb/dev/pagines/Portal.html" class="contact-button contact-more-info">More Information</a>
-    </div>
-</section>
-
-    </main>
 
     <footer class="footer">
         <p>© 2025 - All rights reserved - <a href="mailto:mail@tb.cat">mail@tb.cat</a></p>
     </footer>
 
     <script src="../JS/Animacions.js"></script>
-
+    <a href="#" class="back-to-top" id="btnBackToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 </body>
 </html>

@@ -1,340 +1,252 @@
-/* Importamos las fuentes: Lato (Header, Navegación), Poppins (Títulos, Botones), Roboto (Cuerpo) */
+/* --- CSS FINAL: ESTRUCTURA ORIGINAL + GLASS EFECTO --- */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@700&family=Roboto:wght@300;400;700&display=swap');
 
-/* Variables para colores */
 :root {
-    --primary-bg: #F9F9F9;          /* Fondo principal: Gris Muy Claro/Cálido */
-    --secondary-bg: #000;           /* Fondo secundario: Negro (para Footer) */
-    --dark-grey: #121212;           /* Fondo terciario: Gris Oscuro (para Header y Menú) */
-
-    --text-color: #333333;          /* Texto principal: Gris oscuro suave */
-    --light-text-color: #fff;       /* Texto claro: Blanco */
+    --primary-bg: #F9F9F9;
+    --secondary-bg: #000;
+    --dark-grey: #121212;
+    --text-color: #333333;
+    --light-text-color: #fff;
     --max-width: 800px;
+    --accent-color: #9B59B6;
+    --hover-color: #8E44AD;
+    --card-back-color: #555;
 
-    /* --- PALETA DE ACENTO: PÚRPURA PROFESIONAL VIVO --- */
-    --accent-color: #9B59B6;        /* Púrpura Intenso (Botones, Títulos) */
-    --hover-color: #8E44AD;         /* Púrpura más oscuro para efecto Hover */
-    --card-back-color: #555;        /* Gris oscuro para la parte trasera del flip-card */
+    /* Configuración Glass */
+    --glass-bg: rgba(18, 18, 18, 0.94);
+    --glass-blur: 40px;
 }
 
-/* Estilos Generales */
 body {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     background-color: var(--primary-bg);
     color: var(--text-color);
     overflow-x: hidden;
 }
 
-/* Barra de Navegación (Header) */
+/* --- TRANSICIONES DE PÁGINA --- */
+#page-content { transition: transform 0.6s ease-out, opacity 0.6s ease-out; }
+.content-exit { opacity: 0 !important; transform: translateY(-40px) !important; }
+
+/* --- HEADER (ESTÁTICO + GLASS) --- */
 .navbar {
-    background-color: var(--dark-grey); /* Gris Oscuro */
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
     color: var(--light-text-color);
     padding: 45px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Header no fijo */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid var(--accent-color);
     z-index: 10;
 }
 
 .navbar h1 {
     margin: 0;
-    font-family: 'Lato', sans-serif; /* Lato: Elegante y minimalista */
+    font-family: 'Lato', sans-serif;
     font-size: 2.5em;
     font-weight: 900;
+    letter-spacing: 2px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    text-transform: uppercase;
 }
 
-.menu-icon {
-    font-size: 2em;
-    cursor: pointer;
-    z-index: 20;
-}
+.menu-icon { font-size: 2em; cursor: pointer; z-index: 20; transition: all 0.3s ease; }
+.menu-icon:hover { color: var(--accent-color); transform: scale(1.1); }
 
-/* Menú desplegable lateral */
+/* --- NAV LATERAL (GLASS) --- */
 .menu-dropdown {
     position: fixed;
     top: 0;
-    left: -250px;
-    width: 250px;
+    left: -280px;
+    width: 280px;
     height: 100%;
-    background-color: var(--dark-grey);
-    color: var(--light-text-color);
-    transition: left 0.3s ease;
-    padding-top: 110px;
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    padding-top: 140px;
     z-index: 5;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.menu-dropdown ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu-dropdown li {
-    padding: 15px;
-    border-bottom: 1px solid #444;
-}
+.menu-dropdown.show { left: 0; }
+.menu-dropdown ul { list-style: none; padding: 0; margin: 0; }
+.menu-dropdown li { opacity: 0; transform: translateX(-20px); transition: all 0.4s ease; }
+.menu-dropdown.show li { opacity: 1; transform: translateX(0); }
 
 .menu-dropdown a {
-    font-family: 'Lato', sans-serif; /* Lato en la navegación */
-    font-weight: 700;
-    color: var(--light-text-color);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px 35px;
     display: block;
+    transition: all 0.3s ease;
 }
-
 .menu-dropdown a:hover {
     color: var(--accent-color);
-    opacity: 1;
+    padding-left: 45px;
+    background-color: rgba(155, 89, 182, 0.1);
 }
 
-/* Mostrar el menú */
-.menu-dropdown.show {
-    left: 0;
-}
-
-/* Estilos Generales para el resto de la página */
+/* --- CONTENIDO CENTRADO --- */
 .content-container {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Secciones */
-section {
-    margin-bottom: 40px;
+section { margin-bottom: 40px; }
+
+/* --- PROYECTOS --- */
+.projects-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+.project-item img {
+    width: 370px; height: 370px; object-fit: contain;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Nombre y Apellido (profile-header) */
-.profile-header p {
-    font-family: 'Lato', sans-serif;
+.project-item img:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(155, 89, 182, 0.3);
+}
+
+/* --- BOTONES DE CONTACTO (RESTABLECIDOS) --- */
+.contact-section { text-align: center; margin-top: 50px; margin-bottom: 50px; }
+
+.contact-buttons {
+    display: flex;
+    gap: 30px; /* Espaciado ajustado para evitar sobreposición */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Asegura que bajen si no caben en móviles */
+    margin-bottom: 20px;
+    margin-top: 70px;
+}
+
+.contact-more-info {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 45px;
+    border-radius: 12px; /* Redondeados originales */
+    text-decoration: none;
+    display: inline-block;
     font-weight: 700;
-    font-size: 1.2em;
-    margin-bottom: 5px;
+    transition: all 0.3s ease;
 }
 
-/* ABOUT ME - Párrafo del Lorem Ipsum */
-.about-me p {
-    font-weight: 300; /* Peso ligero para lectura cómoda (Roboto) */
+.contact-more-info:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(155, 89, 182, 0.5);
 }
 
-/* TÍTULOS DE SECCIÓN */
-.about-me h2,
-.projects h2 {
-    font-family: 'Poppins', sans-serif; /* Poppins para títulos de sección */
-    font-size: 1.8em;
+/* --- TARJETAS GIRATORIAS (REDONDEADAS) --- */
+.flip-card {
+    width: 240px;
+    height: 75px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 10px; /* Margen para evitar que choquen */
+}
+.flip-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+.flip-card-front, .flip-card-back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; display: flex;
+    align-items: center; justify-content: center;
+    border-radius: 15px; /* Redondeado original */
+    font-family: 'Poppins', sans-serif;
+    padding: 15px; box-sizing: border-box;
+}
+
+.flip-card-front { background-color: var(--accent-color); color: white; }
+.flip-card-back {
+    background-color: var(--card-back-color); color: white;
+    transform: rotateY(180deg); font-family: 'Roboto', sans-serif;
+}
+
+/* --- FOOTER (GLASS DENSO) --- */
+.footer {
+    background-color: rgba(10, 10, 10, 0.96);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    padding: 80px 0;
+    margin-top: 100px;
+    border-top: 1px solid rgba(155, 89, 182, 0.3);
+    position: relative;
+}
+
+.footer a, .footer .copyright {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.6);
     font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer a:hover { color: var(--accent-color); }
+
+/* --- BOTÓN VOLVER ARRIBA --- */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px; height: 55px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center; justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* --- TÍTULOS --- */
+.about-me h2, .projects h2 {
+    font-family: 'Poppins', sans-serif;
     color: var(--accent-color);
     border-bottom: 3px solid var(--accent-color);
     padding-bottom: 8px;
     display: inline-block;
 }
 
-/* Proyectos */
-.projects-grid {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
-/* Enlaces de las imágenes (para eliminar el borde/contorno de link) */
-.projects-grid a {
-    text-decoration: none;
-    outline: none;
-    border: none;
-    display: block;
-}
-
-.project-item {
-    flex: 1;
-    min-width: 250px;
-    max-width: calc(50% - 10px);
-    text-align: center; /* Centramos el contenido dentro del item */
-}
-
-/* IMÁGENES DE PROYECTO: TAMAÑO UNIFORME */
-.project-item img {
-    width: 370px;  /* Ancho fijo */
-    height: 370px; /* Alto fijo */
-    object-fit: contain; /* Ajusta la imagen completa sin recortar */
-    margin: 0 auto; /* Centra la imagen */
-
-    display: block;
-    border: 1px solid var(--primary-bg); /* Borde sutil */
-
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.project-item img:hover {
-    transform: translateY(-5px);
-}
-
-.project-item p {
-    margin-top: 5px;
-    font-size: 0.9em;
-}
-
-/* Botón de Contacto */
-.contact-section {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-/* Contenedor de los botones (FLEX) */
-.contact-buttons {
-    display: flex;
-    gap: 80px;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-top: 70px
-}
-
-/* ------------------------------------------- */
-/* ESTILOS MODIFICADOS PARA EL EFECTO FLIP CARD */
-/* ------------------------------------------- */
-
-/* Contenedor principal de la tarjeta */
-.flip-card {
-    width: 240px;
-    height: 75px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-/* Contenedor interior que realmente girará */
-.flip-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-/* Estado de giro al hacer click (ACTIVADO POR JS) */
-.flip-card.flipped .flip-inner {
-    transform: rotateY(180deg);
-}
-
-/* Cara frontal y trasera - Son los botones */
-.contact-button,
-.flip-front,
-.flip-back
-{
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--secondary-bg);
-    color: var(--light-text-color);
-    border: none;
-    padding: 25px 30px;
-    font-size: 1em;
-    cursor: pointer;
-    text-transform: uppercase;
-    border-radius: 15px;
-    transition: background-color 0.3s;
-    line-height: 1.5;
-
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-/* Estilos de la cara frontal (Acento Púrpura) */
-.flip-card-front,
-.flip-front {
-    background-color: var(--accent-color);
-    color: var(--light-text-color);
-}
-
-/* Estilos de la cara trasera (Gris oscuro) */
-.flip-card-back,
-.flip-back {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    text-transform: none;
-
-    background-color: var(--card-back-color);
-    color: var(--light-text-color);
-    transform: rotateY(180deg);
-    padding: 10px;
-    font-size: 0.9em;
-}
-
-.flip-card-back p,
-.flip-back p {
-    margin: 0;
-}
-
-/* BOTÓN DE "CONTACT FORM" (Acento Púrpura) */
-.contact-more-info {
-    font-family: 'Poppins', sans-serif;
-
-    background-color: var(--accent-color) !important;
-    color: var(--light-text-color) !important;
-    padding: 15px 40px !important;
-    line-height: 1.5 !important;
-    position: static !important;
-    backface-visibility: visible !important;
-    width: auto !important;
-    height: auto !important;
-    display: inline-block !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Efecto Hover */
-.contact-button:hover,
-.flip-front:hover,
-.contact-more-info:hover {
-    background-color: var(--hover-color) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Botón centrado debajo de los otros dos */
-.contact-button-center {
-    text-align: center;
-    margin-top: 70px;
-}
-
-/* Pie de Página (Footer) */
-.footer {
-    background-color: var(--secondary-bg);
-    color: var(--light-text-color);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.9em;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.footer a {
-    color: var(--accent-color);
-    text-decoration: none;
-}
-
-.footer a:hover {
-    text-decoration: underline;
-    color: var(--hover-color);
-}
+.fade-in.visible { opacity: 1; transform: translateY(0); }

@@ -1,86 +1,87 @@
-// JavaScript para manejar las animaciones y la interactividad de la página
 document.addEventListener('DOMContentLoaded', function() {
-    // --- Menú desplegable ---
+    const pageContent = document.getElementById('page-content');
+    const fadeElements = document.querySelectorAll('.fade-in');
     const menuIcon = document.getElementById('menuIcon');
     const menu = document.getElementById('menuDropdown');
+    const btnTop = document.getElementById('btnBackToTop');
 
-    // Abre y cierra el menú al hacer clic en el icono
+    // 1. ENTRADA ESCALONADA MEJORADA
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 150);
+            }
+        });
+    }, observerOptions);
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // 2. SALIDA SUAVE AL NAVEGAR
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !this.target && !href.includes('docs.google.com')) {
+                e.preventDefault();
+                if (pageContent) pageContent.classList.add('content-exit');
+                setTimeout(() => { window.location.href = href; }, 550);
+            }
+        });
+    });
+
+    // 3. MENÚ LATERAL CON EFECTO DE ROTACIÓN
     if (menuIcon && menu) {
-        menuIcon.addEventListener('click', function(event) {
-            event.stopPropagation(); // Evita que el evento se propague y cierre el menú inmediatamente
+        menuIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
             menu.classList.toggle('show');
+            menuIcon.style.transform = menu.classList.contains('show') ? 'rotate(90deg)' : 'rotate(0deg)';
+            menuIcon.style.color = menu.classList.contains('show') ? 'var(--accent-color)' : 'white';
         });
 
-        // Cierra el menú si se hace clic fuera de él
-        document.addEventListener('click', function(event) {
-            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !menuIcon.contains(e.target)) {
                 menu.classList.remove('show');
+                menuIcon.style.transform = 'rotate(0deg)';
+                menuIcon.style.color = 'white';
+            }
+        });
+    }
+
+    // 4. ANIMACIÓN PARALLAX EN IMÁGENES DE PROYECTOS
+    document.querySelectorAll('.project-item img').forEach(img => {
+        img.addEventListener('mousemove', (e) => {
+            const { offsetWidth: width, offsetHeight: height } = img;
+            const { offsetX: x, offsetY: y } = e;
+            const moveX = (x / width - 0.5) * 20; // Movimiento de 20px
+            const moveY = (y / height - 0.5) * 20;
+            img.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+        });
+
+        img.addEventListener('mouseleave', () => {
+            img.style.transform = 'translate(0, 0) scale(1)';
+        });
+    });
+
+    // 5. FUNCIONALIDAD VOLVER ARRIBA
+    if (btnTop) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                btnTop.classList.add('show');
+            } else {
+                btnTop.classList.remove('show');
             }
         });
 
-        // Evita que el evento de clic en el menú lo cierre
-        menu.addEventListener('click', function(event) {
-            event.stopPropagation();
+        btnTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
-    // --- PROJECT LIST (expandable for future scalability) ---
-    const projects = [
-        {
-            name: "Project 1 - Name Project",
-            img: "https://via.placeholder.com/300x200",
-            what: "Descripción de WHAT IS del proyecto 1.",
-            why: "Explicación de WHY del proyecto 1."
-        },
-        {
-            name: "Project 2 - Name Project",
-            img: "https://via.placeholder.com/300x200",
-            what: "Descripción de WHAT IS del proyecto 2.",
-            why: "Explicación de WHY del proyecto 2."
-        }
-    ];
-
-    // Inject projects dynamically (Este bloque solo se ejecuta si el contenedor existe)
-    const container = document.getElementById("projectsContainer");
-
-    if (container) {
-        projects.forEach((project, index) => {
-            const card = document.createElement("div");
-            card.classList.add("project-card");
-
-            card.innerHTML = `
-                <h3>${project.name}</h3>
-                <img src="${project.img}" alt="Project image" />
-
-                <div class="flip-card" data-id="${index}-what">
-                    <div class="flip-inner">
-                        <div class="flip-front">WHAT IS</div>
-                        <div class="flip-back">${project.what}</div>
-                    </div>
-                </div>
-
-                <div class="flip-card" data-id="${index}-why">
-                    <div class="flip-inner">
-                        <div class="flip-front">WHY</div>
-                        <div class="flip-back">${project.why}</div>
-                    </div>
-                </div>
-            `;
-
-            container.appendChild(card);
-        });
-    }
-
-
-    // --- LÓGICA DEL GIRO DE BOTONES (Aplica a botones estáticos y dinámicos) ---
-
-    // El selector busca todos los contenedores de tarjeta giratoria.
-    const flipCards = document.querySelectorAll('.flip-card');
-
-    flipCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Añade o quita la clase 'flipped', lo que activa la rotación en CSS
-            card.classList.toggle('flipped');
-        });
+    // 7. TARJETAS FLIP
+    document.querySelectorAll('.flip-card').forEach(card => {
+        card.addEventListener('click', () => card.classList.toggle('flipped'));
     });
 });

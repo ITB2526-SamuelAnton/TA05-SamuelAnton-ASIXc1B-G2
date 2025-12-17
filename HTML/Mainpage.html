@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Name and surname </title>
+    <title>Portfolio - Samuel Antón </title>
     <link rel="stylesheet" href="../CSS/Style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body class="page-transition">
 
     <header class="navbar">
-        <!-- Icono de menú -->
         <div class="menu-icon" id="menuIcon">
             <i class="fas fa-bars"></i>
         </div>
-        <h1>Portfolio</h1>
+        <h1>PORTFOLIO</h1>
     </header>
 
-    <!-- Menú desplegable -->
     <div id="menuDropdown" class="menu-dropdown">
         <ul>
             <li><a href="./Project1.html">Oria</a></li>
@@ -26,46 +24,48 @@
         </ul>
     </div>
 
-    <main class="content-container">
+    <div id="page-content">
+        <main class="content-container">
+            <section class="profile-header fade-in">
+                <H2>Samuel Antón</H2>
+            </section>
 
-        <section class="profile-header">
-            <p>Name and surname</p>
-        </section>
+            <section class="about-me fade-in">
+                <h2>ABOUT ME</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum arcu nibh, quis egestas dolor dapibus quis. Donec feugiat quam eu congue sodales. Quisque tempus libero in velit imperdiet consequat. Vivamus commodo, tortor eget interdum molestie, dolor nulla suscipit mauris, dapibus bibendum metus dui a dui.</p>
+            </section>
 
-        <section class="about-me">
-            <h2>ABOUT ME</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum arcu nibh, quis egestas dolor dapibus quis. Donec feugiat quam eu congue sodales. Quisque tempus libero in velit imperdiet consequat. Vivamus commodo, tortor eget interdum molestie, dolor nulla suscipit mauris, dapibus bibendum metus dui a dui. Ut dictum condimentum justo at commodo. Nullam fringilla dui neque, at ultricies turpis facilisis eget. Fusce congue nibh tellus, at ultrices mi faucibus vulputate. In molestie, metus non pretium feugiat, tellus quam interdum dui, ac interdum urna arcu non risus. Donec vehicula mi quam, sit amet interdum tortor auctor in.</p>
-        </section>
-
-        <section class="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-item">
-                    <a href="./Project1.html">
-                        <img src="../Images/Logo_EchoMind-SinFondo.png" alt="Project 1">
-                    </a>
-                    <p>Name project 1</p>
+            <section class="projects fade-in">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <a href="./Project1.html">
+                            <img src="../Images/Logo_EchoMind-SinFondo.png" alt="Project 1">
+                        </a>
+                        <p>Name project 1</p>
+                    </div>
+                    <div class="project-item">
+                        <a href="./Project2.html">
+                            <img src="../Images/Logo_Techrestore.png" alt="Project 2">
+                        </a>
+                        <p>Name project 2</p>
+                    </div>
                 </div>
-                <div class="project-item">
-                    <a href="./Project2.html">
-                        <img src="../Images/Logo_Techrestore.png" alt="Project 2">
-                    </a>
-                    <p>Name project 2</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="contact-section">
-             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdobdwvUXxBdfYly9z63_jWkZwMWWFsIrOLQ1MWTmCmNPdkWg/viewform" class="contact-button contact-more-info">Contact Form</a>
-        </section>
-
-    </main>
+            <section class="contact-section fade-in">
+                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdobdwvUXxBdfYly9z63_jWkZwMWWFsIrOLQ1MWTmCmNPdkWg/viewform" class="contact-button contact-more-info">Contact Form</a>
+            </section>
+        </main>
+    </div>
 
     <footer class="footer">
         <p>© 2025 - All rights reserved - <a href="mailto:mail@tb.cat">mail@tb.cat</a></p>
     </footer>
 
     <script src="../JS/Animacions.js"></script>
-
+    <a href="#" class="back-to-top" id="btnBackToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 </body>
 </html>
