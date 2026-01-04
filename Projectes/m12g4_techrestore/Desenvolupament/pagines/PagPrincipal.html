@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techrestore</title>
+    <link rel="stylesheet" type="text/css" href="../css/estil_pagines.css">
+    <style>
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Imágenes */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Animación al pasar el cursor */
+        img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        #cookieBanner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            display: none;
+        }
+
+        #cookieBanner button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #cookieBanner button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="PagSecundaria.html">Serveis, Infraestructura i Organigrama.</a></li>
+            </ul>
+        </nav>
+    </header>
+    <img src="../Fotos/Logo.png" alt="Logo empresa">
+    <section id="qui-som">
+        <h1>Qui som</h1>
+        <p>Som una empresa dedicada a la reparació de material informàtic i a la venda de dispositius de segona mà en
+            perfectes condicions. La nostra missió és oferir solucions tecnològiques eficients i sostenibles, ajudant
+            tant a particulars com a empreses a mantenir els seus equips en òptim estat de funcionament.
+
+            Ens especialitzem en la diagnosi i reparació de tot tipus d’ordinadors, portàtils i altres dispositius
+            electrònics, garantint un servei professional i personalitzat.
+        </p>
+    </section>
+
+    <section id="que-fem">
+        <h1>Què fem</h1>
+        <p>Oferim un servei tècnic especialitzat per a la reparació, manteniment i optimització d'ordinadors, portàtils
+            i altres dispositius electrònics. Ens assegurem que cada equip funcioni amb el màxim rendiment, allargant-ne
+            la vida útil i evitant així el malbaratament tecnològic.
+
+            A més, apostem per la reutilització i el consum responsable, promovent la venda de dispositius de segona mà
+            que han estat revisats i posats a punt pels nostres tècnics.
+            També assessorem els nostres clients sobre com mantenir els seus equips en bon estat i optimitzar-ne l’ús
+            per evitar futures avaries. La nostra missió és oferir un servei de qualitat, professional i compromès amb
+            el medi ambient.</p>
+    </section>
+
+    <section id="on-som">
+        <h1>On som</h1>
+        <p>La nostra empresa està ubicada al carrer de Girona, en un local de 300 m² que ens permet oferir un servei
+            eficient i còmode als nostres clients. A l’entrada disposem d’una zona d’atenció al client per resoldre
+            qualsevol dubte o consulta.</p>
+
+        <h2 style="display: flex; flex-direction: column; align-items: center;  padding-bottom: 3%;  padding-top: 3%;">Localització</h2>
+        <p style="  padding-bottom: 3%;">Pots trobar-nos aquí:</p>
+
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509364!2d144.95373531531592!3d-37.81627917975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df1f7f1f7%3A0x5e3c5d5df1f7f1f7!2sCarrer+de+Girona%2C+Barcelona!5e0!3m2!1sca!2ses!4v1614971234567!5m2!1sca!2ses"
+            width="100%" height="450" style="border:0; border-radius:8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"
+            allowfullscreen="" loading="lazy">
+        </iframe>
+        
+        <img id="ubicacio" src="../Fotos/Planols.png" alt="Ubicació de l'empresa">
+    </section>
+    <div id="cookieBanner">
+        <p>Usamos cookies para mejorar la experiencia. Al continuar, aceptas su uso.</p>
+        <button onclick="acceptCookies()">Aceptar</button>
+    </div>
+    <script>
+        function acceptCookies() {
+            localStorage.setItem("cookiesAccepted", "true");
+            document.getElementById("cookieBanner").style.display = "none";
+        }
+
+        function checkCookies() {
+            if (localStorage.getItem("cookiesAccepted")) {
+                document.getElementById("cookieBanner").style.display = "block";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", checkCookies);
+    </script>
+    <footer id="contacte">
+        <h2>Contacte amb nosaltres!</h2>
+        <form action="#" method="post"
+            style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 400px; margin: 0 auto;">
+            <label for="nom" style="align-self: flex-start;">Nom:</label>
+            <input type="text" id="nom" name="nom" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+            <label for="correu" style="align-self: flex-start;">Correu electrònic:</label>
+            <input type="email" id="correu" name="correu" required
+                style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+            <label for="missatge" style="align-self: flex-start;">Missatge:</label>
+            <textarea id="missatge" name="missatge" required
+                style="width: 100%; padding: 8px; margin-bottom: 10px; height: 100px;"></textarea>
+
+            <button type="submit"
+                style="width: 100%; padding: 10px; background-color:grey; color: white; border: none; cursor: pointer;">Enviar</button>
+        </form>
+    </footer>
+</body>
+
+</html>
+

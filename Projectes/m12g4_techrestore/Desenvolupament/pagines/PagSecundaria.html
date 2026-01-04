@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serveis i Infraestructura</title>
+    <link rel="stylesheet" type="text/css" href="../css/estil_pagines.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="PagPrincipal.html">Inici</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div style="justify-content: center; padding-left: 40%; padding-top: 2%">
+       <img src="../Fotos/Logo.png" alt="Logo empresa">
+    </div>
+
+    <section id="serveis-productes">
+        <h1>Serveis/Productes</h1>
+        <ul>
+            <li>Reparació d'ordinadors</li>
+            <li>Venda de dispositius de segona mà</li>
+            <li>Manteniment de sistemes informàtics</li>
+        </ul>
+    </section>
+
+    <section id="infraestructura">
+        <h1>Infraestructura</h1>
+        <p>La nostra empresa compta amb un local de 300 m² al carrer de Girona, distribuït per garantir una atenció al
+            client còmoda i un entorn de treball eficient. A l’entrada, oferim assessorament sobre reparacions i venda
+            de dispositius. A l’interior, disposem de zones tècniques equipades per a la reparació i optimització
+            d’equips. El local inclou lavabos, una sala de descans i compleix amb els estàndards de seguretat.</p>
+    </section>
+
+    <section id="organigrama">
+        <h1>Organigrama</h1>
+        <p>Descripció de l'estructura de l'empresa i el seu equip directiu.</p>
+        <img id="org-img" src="../Fotos/Organigrama.png" alt="Organigrama">
+    </section>
+    <footer id="contacte">
+        <h2>Contacta amb nosaltres!</h2>
+        <form action="#" method="post"
+            style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 400px; margin: 0 auto;">
+            <label for="nom" style="align-self: flex-start;">Nom:</label>
+            <input type="text" id="nom" name="nom" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+            <label for="correu" style="align-self: flex-start;">Correu electrònic:</label>
+            <input type="email" id="correu" name="correu" required
+                style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+            <label for="missatge" style="align-self: flex-start;">Missatge:</label>
+            <textarea id="missatge" name="missatge" required
+                style="width: 100%; padding: 8px; margin-bottom: 10px; height: 100px;"></textarea>
+
+            <button type="submit"
+                style="width: 100%; padding: 10px; background-color:rgb(128, 128, 128); color: white; border: none; cursor: pointer;">Enviar</button>
+        </form>
+    </footer>
+</body>
+
+</html>
