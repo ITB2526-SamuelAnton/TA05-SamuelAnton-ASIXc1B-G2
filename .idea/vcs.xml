@@ -3,7 +3,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Projectes" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Projectes/echomind-portalweb" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Projectes/m12g4_techrestore" vcs="Git" />
   </component>
 </project>
