@@ -39,7 +39,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative; /* Header no fijo */
+    position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-bottom: 3px solid var(--accent-color);
     z-index: 10;
@@ -57,13 +57,31 @@ body {
     text-transform: uppercase;
 }
 
-.menu-icon { font-size: 2em; cursor: pointer; z-index: 20; transition: all 0.3s ease; }
-.menu-icon:hover { color: var(--accent-color); transform: scale(1.1); }
+.menu-icon {
+    font-size: 1em;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* 🔥 LOGO DEL MENÚ MÁS PEQUEÑO */
+.menu-logo {
+    width: 60px;   /* Ajusta aquí el tamaño */
+    height: auto;
+    display: block;
+}
+
+.menu-icon:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
 
 /* --- NAV LATERAL (GLASS) --- */
 .menu-dropdown {
     position: fixed;
-    top: 0;
+    top: 20px;
     left: -280px;
     width: 280px;
     height: 100%;
@@ -123,15 +141,15 @@ section { margin-bottom: 40px; }
     box-shadow: 0 15px 35px rgba(155, 89, 182, 0.3);
 }
 
-/* --- BOTONES DE CONTACTO (RESTABLECIDOS) --- */
+/* --- BOTONES DE CONTACTO --- */
 .contact-section { text-align: center; margin-top: 50px; margin-bottom: 50px; }
 
 .contact-buttons {
     display: flex;
-    gap: 30px; /* Espaciado ajustado para evitar sobreposición */
+    gap: 30px;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* Asegura que bajen si no caben en móviles */
+    flex-wrap: wrap;
     margin-bottom: 20px;
     margin-top: 70px;
 }
@@ -141,7 +159,7 @@ section { margin-bottom: 40px; }
     background-color: var(--accent-color);
     color: white;
     padding: 15px 45px;
-    border-radius: 12px; /* Redondeados originales */
+    border-radius: 12px;
     text-decoration: none;
     display: inline-block;
     font-weight: 700;
@@ -154,13 +172,13 @@ section { margin-bottom: 40px; }
     box-shadow: 0 8px 25px rgba(155, 89, 182, 0.5);
 }
 
-/* --- TARJETAS GIRATORIAS (REDONDEADAS) --- */
+/* --- TARJETAS GIRATORIAS --- */
 .flip-card {
     width: 240px;
     height: 75px;
     perspective: 1000px;
     cursor: pointer;
-    margin: 10px; /* Margen para evitar que choquen */
+    margin: 10px;
 }
 .flip-inner {
     position: relative; width: 100%; height: 100%;
@@ -172,7 +190,7 @@ section { margin-bottom: 40px; }
     position: absolute; width: 100%; height: 100%;
     backface-visibility: hidden; display: flex;
     align-items: center; justify-content: center;
-    border-radius: 15px; /* Redondeado original */
+    border-radius: 15px;
     font-family: 'Poppins', sans-serif;
     padding: 15px; box-sizing: border-box;
 }
@@ -183,7 +201,7 @@ section { margin-bottom: 40px; }
     transform: rotateY(180deg); font-family: 'Roboto', sans-serif;
 }
 
-/* --- FOOTER (GLASS DENSO) --- */
+/* --- FOOTER --- */
 .footer {
     background-color: rgba(10, 10, 10, 0.96);
     backdrop-filter: blur(25px);
@@ -194,16 +212,6 @@ section { margin-bottom: 40px; }
     margin-top: 100px;
     border-top: 1px solid rgba(155, 89, 182, 0.3);
     position: relative;
-}
-
-.footer a, .footer .copyright {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.15em;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: block;
-    margin: 10px 0;
-    text-decoration: none;
 }
 
 .footer a {
