@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    // 🔧 SOLUCIÓN: RECARGAR AL VOLVER ATRÁS PARA EVITAR PANTALLA EN BLANCO
+    window.addEventListener("pageshow", function(event) {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    });
+
     const pageContent = document.getElementById('page-content');
     const fadeElements = document.querySelectorAll('.fade-in');
     const menuIcon = document.getElementById('menuIcon');
@@ -54,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.addEventListener('mousemove', (e) => {
             const { offsetWidth: width, offsetHeight: height } = img;
             const { offsetX: x, offsetY: y } = e;
-            const moveX = (x / width - 0.5) * 20; // Movimiento de 20px
+            const moveX = (x / width - 0.5) * 20;
             const moveY = (y / height - 0.5) * 20;
             img.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
         });
